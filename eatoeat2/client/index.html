@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="public_view" ng-controller="home_controller">
+	<head>
+		<title ng-bind="title"></title>
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+
+			<div>
+
+		 <link ng-repeat="stylesheet in stylesheets" ng-href="{{stylesheet.href}}" type="{{stylesheet.type}}" rel="stylesheet" />
+			</div>
+	
+		<link href="plugin/tabs/css/tabs.css" rel="stylesheet">
+		<link href="fonts/font-awesome/css/font-awesome.min.css" rel="stylesheet">
+
+	
+	</head>
+
+<body class="body-color">
+
+<div class="main-container">
+
+	<div ng-view>
+	
+	</div>
+
+</div>
+
+<script src="public/js/libraries/jquery-min.js"></script>
+<script src="public/js/libraries/angular-min.js"></script>
+<script src="public/js/libraries/route-min.js"></script>
+<script src="public/js/libraries/cookies.js"></script>
+<script src="public/js/libraries/route.js"></script>
+<script type="text/javascript" src="public/js/libraries/angular-datepicker.js"></script>
+<script type="text/javascript" src="pages/admin/js/angular-ckeditor.min.js"></script>
+<script src="public/js/controllers/data_control.js"></script>
+<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/angular.js/1.4.0/angular-cookies.min.js"></script>
+
+ <link ng-repeat="scirpt in scripts" ng-href="{{scripts.href}}" />
+
+
+
+  </body>
+</html>

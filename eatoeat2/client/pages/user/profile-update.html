@@ -1,0 +1,69 @@
+
+<div ng-controller="user_register" ng-init="login_check()">
+
+<link href="plugin/calendar/css/1.css" rel="stylesheet">
+<div ng-include="'pages/inc/header.html'" class="common-header"></div>
+
+	<div class="container my-account-page">
+		<div ng-include="'pages/user/inc/account-panel.html'" class="left-panel"></div>
+
+			<div class="right-panel update-profile w-shadow">
+			<h4 class="page-name">Update your Profile</h4>
+			<p ng-show="user_profile_update_status" style="font-size:12px;color:green">Password Successfully Updated..!</p>
+	
+			<div class="display-setting">
+				<div class="form-box">
+
+					<div class="col-md-20 left">
+						<div class="form-div center">
+							<span class="label">Profile photo</span>
+							<label class="upload-single-image" title="Please upload your logo">
+								<input name="file[]" multiple="" class="input-file" type="file">
+								<span class="thumb"><img src="public/images/icon/cart.png"></span>
+							</label>
+						</div>
+					</div>
+
+					<div class="col-md-80 right">
+						<div class="form-div">
+							<span class="label">Please enter First Name</span>
+							<input name="" class="input-box" placeholder="First Name" type="text" ng-model="user_profile_update_data.user_firstname">
+						</div>
+						<div class="form-div">
+							<span class="label">Please enter Last Name</span>
+							<input name="" class="input-box" placeholder="Last Name" type="text" ng-model="user_profile_update_data.user_lastname">
+						</div>
+					</div>
+					<div class="form-div">
+						<span class="label">Date of Birth</span>
+						<input class="input-box span2" value="02/16/12" data-date-format="mm/dd/yy" id="dp2" type="text" ng-model="user_profile_update_data.user_dob">
+					</div>
+					<div class="form-div">
+						<span class="label">Gender</span>
+						<select class="select-option" ng-model="user_profile_update_data.user_gender">
+							<option>Gender</option>
+							<option>Male</option>
+							<option>Female</option>
+						</select>
+					</div>
+					<div class="form-div">
+						<input name="" class="submit-btn" value="Save" type="submit" ng-click="user_profile_update(user_profile_update_data)">
+					</div>
+				</div>
+			</div>
+		</div>
+
+	</div>
+
+<div ng-include="'pages/inc/footer.html'"></div>
+<script src="plugin/calendar/js/1.js"></script> 
+<script type="text/javascript">
+	
+$('#dp2').fdatepicker({
+	closeButton: false
+});
+
+</script>
+
+</div>
+

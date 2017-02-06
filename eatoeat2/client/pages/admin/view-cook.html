@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<div ng-controller="admin_controller">
+<!-- main container start herer -->
+<div class="main-container dashboard"  >
+
+<div ng-include="'pages/admin/admin-left-menu.html'"></div>
+
+	<div class="work-pannel">
+		<!-- top header start here -->
+		<div class="top-header">
+			<div class="container">
+				<ul class="menu">
+					<li class="logout-btn"><a href="#0" class="main-link">Logout</a></li>
+				</ul>
+			</div>
+		</div>
+		<!-- top header end here -->
+
+		<div class="container">
+			<div class="view-pannel">
+
+				<!-- page bar start here -->
+				<div class="page-name-bar">
+					<h2 class="page-name">Cooks</h2>
+					<ul class="breadcrumbs">
+						<li class="list"><a href="#0" class="link">Home</a></li>
+						<li class="list">Cooks</li>
+					</ul>
+
+					<ul class="link-icon">
+						<li class="list"><a href="#/admin/add-cook" class="blue-btn"><i class="fa fa-plus" aria-hidden="true"></i></a></li>
+						<li class="list"><a href="#0" class="white-btn"><i class="fa fa-refresh" aria-hidden="true"></i></a></li>
+						<li class="list"><div class="red-btn" ng-click="cook_delete()"><i class="fa fa-trash-o" aria-hidden="true"></i></div></li>
+					</ul>
+
+			<p style="margin-left: 50px; padding:5px;color:red;font-weight: bold" ng-show="success_cook_delete">Record Successfully Deleted.! </p>
+				
+				</div>
+				<!-- page bar end here -->
+
+				<div class="table-view">
+					<h3 class="head-name">Cooks List 
+						<div class="right col-px-200">
+							<select class="select-option">
+								<option>Status</option>
+								<option>Enable</option>
+								<option>Disable</option>
+							</select>
+						</div>
+					</h3>
+
+					<ul class="cat-listing-show">
+						<!-- heading part start here-->
+						<li class="list main-name">
+							<div class="coloum-div col-px-50 center">
+								<input type="checkbox" name="" class="check-all-btn" ng-model="hasAllCookChecked.selected" >
+							</div>
+							<div class="coloum-div col-px-200">
+								<span class="title">User Name</span>
+							</div>
+							<div class="coloum-div col-md-25">
+								<span class="title">User Email</span>
+							</div>
+							<div class="coloum-div col-px-150 center">
+								<span class="title">Status</span>
+							</div>
+							<div class="coloum-div col-px-150 center">
+								<span class="title">Join Date</span>
+							</div>
+							<div class="coloum-div col-px-150 center">
+								<span class="title">Last Login</span>
+							</div>
+							<div class="coloum-div center  col-px-100">
+								<span class="title">Total Orders</span>
+							</div>
+						</li>
+					</ul>
+					<!-- heading part end here-->
+					<ul class="cat-listing-show list-group" ng-init="loadCooks()">
+						<li class="list"  ng-repeat="cooks in cooks_list_deatils track by $index">
+							<div class="coloum-div col-px-50 center">
+					<input type="checkbox" name="" class="check-btn"  ng-checked="selection.indexOf(cooks) > -1"
+							 ng-click="toggleSelection(cooks._id)" ng-model="cooks.selected">
+							</div>
+								<div class="coloum-div col-px-200">
+								<span class="title">{{cooks.cook_name}}</span>
+							</div>
+							<div class="coloum-div col-md-25">
+								<span class="title">{{cooks.cook_email}}</span>
+							</div>
+							<div class="coloum-div col-px-150 center">
+								<span class="title">{{cooks.cook_contact}}</span>
+							</div>
+							<div class="coloum-div col-px-150 center">
+								<span class="title">25/5/2016</span>
+							</div>
+							<div class="coloum-div col-px-150 center">
+								<span class="title">1 day ago</span>
+							</div>
+							<div class="coloum-div center  col-px-100">
+								<a href="#0" class="visit-button">Order</a>
+							</div>
+						</li>
+					
+					</ul>
+				</div>
+			</div>
+		</div>
+
+	</div>
+</div>
+<!-- main container end herer -->
+<script type="text/javascript" src="pages/admin/plugin/pagination/paginathing.js"></script>
+<script type="text/javascript">
+	
+
+$(".left-pannel .main-list .toggle-cat").click(function(){
+	$(this).next(".nav-fly").slideToggle(200);
+	$(this).parent(".main-list").nextAll(".main-list").children(".nav-fly").slideUp(1000);
+	$(this).parent(".main-list").prevAll(".main-list").children(".nav-fly").slideUp(1000);
+});
+
+	/* select all btn */
+    $(".check-all-btn").change(function(){
+      $(".check-btn").prop('checked', $(this).prop("checked"));
+      });
+
+	/* pagination */
+	jQuery(document).ready(function($){
+		for (var i = 1; i <= 150; i++) {
+		}
+
+		$('.list-group').paginathing({
+	    perPage: 10,
+	    limitPagination: 5,
+	    containerClass: 'panel-footer'
+		})
+
+	});
+</script>
+
+</div>

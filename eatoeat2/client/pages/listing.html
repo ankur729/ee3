@@ -1,0 +1,232 @@
+<link rel="stylesheet" href="plugin/price-ranger/css/1.css">
+<link href="plugin/calendar/css/1.css" rel="stylesheet">
+
+  <style type="text/css">
+      #map {
+        width: 700px;
+        height: 500px;
+      }
+    </style>
+<div ng-include="'pages/popup/select-user.html'"  ng-show="ask_user_type_show"></div>
+<div class="listing-page">
+	<div class="header">
+		<div class="container">
+			<span class="logo"><img src="images/logo.png"></span>
+			<div ng-include="'pages/inc/right-menu.html'" class="right-menu-pannel"></div>
+
+			<div ng-include="'pages/search/generic-search.html'" class="listing-search"></div>
+		</div>
+
+		<div ng-include="'pages/inc/breadcrumbs.html'" class="bread_ui"></div>
+	</div>
+
+	<!-- process details start here -->
+	<div class="process-detail">
+		<div class="container">
+			<p class="detail-title">food maker in nirman vihar (102 )</p>
+
+			<div class="data-sort right">
+				<div class="sort-by">
+					Sort by: <span class="get-data">High to Low</span>
+				</div>
+				<ul class="sort-well">
+					<li class="list"><a class="link">High to Low</a></li>
+					<li class="list"><a class="link">Low to High</a></li>
+					<li class="list"><a class="link">New</a></li>
+					<li class="list"><a class="link">Popular</a></li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<!-- process details end here -->
+
+	<div class="container">
+		<div class="inner-body">
+			<div ng-include="'pages/inc/filter.html'" class="left-panel"></div>
+
+			<div class="right-panel">
+
+				<!-- display ads start here -->
+				<ul class="display-ads">
+					<li class="list"><img src="images/ads/1.jpg" class="proper-ads"></li>
+					<li class="list"><img src="images/ads/2.jpg" class="proper-ads"></li>
+				</ul>
+				<!-- display ads ends here -->
+
+			<div class="seaTabs row">
+			<div class="seaTabs_switch row">
+				<div class="seaTabs_tab seaTabs_switch_active">All Foods (500)</div>
+				<div class="seaTabs_tab">View in Map</div>
+			</div>
+
+			<div class="seaTabs_content">
+				<div class="seaTabs_item seaTabs_content_active">
+
+			<ul class="food-list" ng-controller="product">
+				<li class="list" ng-repeat="products in products">
+					<div class="style">
+						<div class="coloum-div thumb">
+							<span class="image"><img src="images/product/1.jpg"></span>
+						</div>
+						<div class="coloum-div data">
+							<a href="#/my_reviewed" class="name">{{products.name}}</a>
+							<div class="cuisines">
+								<span class="subtext">Cuisines :</span>
+								<ul class="cuisine-list">
+									<li class="list">{{products.cuisines}}</li>
+								</ul>
+							</div>
+							<div class="rupees">
+								<span class="price">Rs.103</span>
+								<span class="caption">per plate price</span>
+							</div>
+							<div class="qty-controller">
+								<span class="button">-</span>
+								<span class="qty-show">4</span>
+								<span class="button">+</span>
+							</div>
+							<span class="video-btn"><img src="images/icon/video-icon.png"></span>
+						</div>
+					</div>
+				</li>
+				<a href="#0" class="load-more red">Load More</a>
+			</ul>
+
+			</div>
+				<div class="seaTabs_item">
+					<div class="map-view">
+						<div class="styling">
+
+							 <div id="map"></div>
+							 <p><b>Address</b>: <span id="address"></span></p>
+    <p id="error"></p>
+					
+						</div>
+					</div>
+				</div>
+			</div>
+			</div>
+
+			</div>
+		</div>
+	</div>
+</div>
+<div ng-include="'pages/inc/footer.html'"></div>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBv1EEAvjd-I-fJyMrxXSvhfcSFj_Y3qTM"></script>
+
+<script src="plugin/tabs/js/sea.tabs.js"></script>
+<script src="plugin/price-ranger/js/1.js"></script>
+<script src="plugin/price-ranger/js/2.js"></script>
+<script src="plugin/calendar/js/1.js"></script> 
+
+
+<script type="text/javascript">
+
+$(".data-sort .sort-well .list .link").click(function(){
+	$(this).parents(".sort-well").prev(".sort-by").children(".get-data").html(this.innerHTML);
+});
+
+
+$(".filter-by-rate .list").click(function(){
+	$(this).addClass("active");
+	$(this).prevAll(".list").removeClass("active");
+	$(this).nextAll(".list").removeClass("active");
+});
+
+
+$(function() {
+  $( "#slider-range" ).slider({
+    range: true,
+    min: 0,
+    max: 2000,
+    values: [ 0, 2000 ],
+    slide: function( event, ui ) {
+      $( "#amount" ).val( " INR " + ui.values[ 0 ] + " - INR " + ui.values[ 1 ] );
+    }
+  });
+  $( "#amount" ).val( " INR " + $( "#slider-range" ).slider( "values", 0 ) +
+    " - INR " + $( "#slider-range" ).slider( "values", 1 ) );
+});
+
+$(function() {
+  $( "#hours-range" ).slider({
+    range: true,
+    min: 00,
+    max: 24,
+    values: [ 00, 24 ],
+    slide: function( event, ui ) {
+      $( "#hours" ).val( " HH " + ui.values[ 0] + " - HH " + ui.values[ 1 ] );
+    }
+  });
+  $( "#hours" ).val( " HH " + $( "#hours-range" ).slider( "values", 0 ) +
+    " - HH " + $( "#hours-range" ).slider( "values", 1 ) );
+});
+
+$('#dp1').fdatepicker({
+	closeButton: false
+});
+</script>
+   <script>
+      function writeAddressName(latLng) {
+        var geocoder = new google.maps.Geocoder();
+        geocoder.geocode({
+          "location": latLng
+        },
+        function(results, status) {
+          if (status == google.maps.GeocoderStatus.OK)
+            document.getElementById("address").innerHTML = results[0].formatted_address;
+          else
+            document.getElementById("error").innerHTML += "Unable to retrieve your address" + "<br />";
+        });
+      }
+
+      function geolocationSuccess(position) {
+        var userLatLng = new google.maps.LatLng(position.coords.latitude, position.coords.longitude);
+        // Write the formatted address
+        writeAddressName(userLatLng);
+
+        var myOptions = {
+          zoom : 16,
+          center : userLatLng,
+          mapTypeId : google.maps.MapTypeId.ROADMAP
+        };
+        // Draw the map
+        var mapObject = new google.maps.Map(document.getElementById("map"), myOptions);
+        // Place the marker
+        new google.maps.Marker({
+          map: mapObject,
+          position: userLatLng
+        });
+        // Draw a circle around the user position to have an idea of the current localization accuracy
+        var circle = new google.maps.Circle({
+          center: userLatLng,
+          radius: position.coords.accuracy,
+          map: mapObject,
+          fillColor: '#0000FF',
+          fillOpacity: 0.5,
+          strokeColor: '#0000FF',
+          strokeOpacity: 1.0
+        });
+        mapObject.fitBounds(circle.getBounds());
+      }
+
+      function geolocationError(positionError) {
+        document.getElementById("error").innerHTML += "Error: " + positionError.message + "<br />";
+      }
+
+      function geolocateUser() {
+        // If the browser supports the Geolocation API
+        if (navigator.geolocation)
+        {
+          var positionOptions = {
+            enableHighAccuracy: true,
+            timeout: 10 * 1000 // 10 seconds
+          };
+          navigator.geolocation.getCurrentPosition(geolocationSuccess, geolocationError, positionOptions);
+        }
+        else
+          document.getElementById("error").innerHTML += "Your browser doesn't support the Geolocation API";
+      }
+
+      window.onload = geolocateUser;
+    </script>

@@ -1,0 +1,72 @@
+<div ng-controller="user_register" ng-init="login_check()">
+
+<div ng-include="'pages/inc/header.html'" class="common-header"></div>
+
+	<div class="container my-account-page">
+		<div ng-include="'pages/user/inc/account-panel.html'" class="left-panel"></div>
+
+		<div class="right-panel manage-account">
+			<h4 class="page-name w-shadow">
+			<span class="left margin-top-10px">Manage your account</span>
+			<span class="need-help-btn">Need Help</span>
+			</h4>
+			
+			<div class="display-area">
+				<div class="left-pannel">
+					<div class="update-email w-shadow">
+						<h4 class="main-title">Update Email or Mobile</h4>
+	
+	<p ng-show="after_success_account_update" style="font-size:12px;color:green"><b>Record Successfully Updated..!</b></p>
+
+
+					<div class="form-display">
+							<div class="form-div">
+								<span class="label">Email Address</span>
+								<input name="" class="input-box" placeholder="Email Address" type="text" ng-model="manage_account_update_user.user_email">
+							</div>
+							<div class="form-div">
+								<span class="label">Mobile Number</span>
+								<input name="" class="input-box" placeholder="Mobile Number" type="text" ng-model="manage_account_update_user.user_mobile">
+							</div>
+							<div class="form-div">
+								<input name="" class="submit-btn" value="Change" type="submit" ng-click="manage_account_user(manage_account_update_user)">
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="right-pannel">
+					<div class="update-email w-shadow">
+						<h4 class="main-title">Deactivate your account</h4>
+
+	<p ng-show="after_success_account_deactivate" style="font-size:12px;color:green"><b>Account Successfully Deactivated..!</b><br><b style="color:lightcoral;margin-left: 15px;">Redirecting you in few seconds.</b></p>
+	<p ng-show="after_failed_account_deactivate" style="font-size:12px;color:red">Details Are Incorrect <b>Try Again.!</b></p>
+
+						<div class="form-display">
+							<div class="form-div">
+								<span class="label">Email Address</span>
+								<input name="" class="input-box" placeholder="Email Address" type="text" ng-model="manage_account_deactivate_user.deactivate_user_email">
+							</div>
+							<div class="form-div">
+								<div class="col-md-50 left padding-right-5px">
+									<span class="label">Mobile Number</span>
+									<input name="" class="input-box" placeholder="Mobile Number" type="text" ng-model="manage_account_deactivate_user.deactivate_user_contact">
+								</div>
+								<div class="col-md-50 left padding-left-5px">
+									<span class="label">Password</span>
+									<input name="" class="input-box" placeholder="Password" type="text" ng-model="manage_account_deactivate_user.deactivate_user_password">
+								</div>
+							</div>
+							<div class="form-div">
+								<input name="" class="submit-btn" value="Confirm Deactivation" type="submit" ng-click="manage_account_user_deactivate(manage_account_deactivate_user)">
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+<div ng-include="'pages/inc/footer.html'"></div>
+
+
+</div>

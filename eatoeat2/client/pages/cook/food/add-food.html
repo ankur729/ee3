@@ -1,0 +1,336 @@
+<link rel="stylesheet" href="plugin/time-picker/wickedpicker.css">
+<link href="plugin/calendar/css/1.css" rel="stylesheet">
+<div ng-controller="cook_controller">
+<div class="row">
+	<div class="field-fillup">
+		<span class="input-field-title mendatory">Food name</span>
+		<div class="col-md-80 input-div">
+		<input id="check1" name="check" value="check1" class="fancy-radio" type="radio" checked="" ng-model="food_details.type">
+        <label for="check1" class="fancy-radio-label">General</label>
+
+        <input id="check2" name="check" value="check2" class="fancy-radio" type="radio" ng-model="food_details.type">
+        <label for="check2" class="fancy-radio-label"> Special Item </label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="field-fillup">
+		<span class="input-field-title mendatory">Food name</span>
+		<div class="col-md-80 input-div">
+		<input name="" class="input-box" placeholder="Please enter food name" type="text" ng-model="food_details.name"></div>
+	</div>
+</div>
+<div class="row">
+	<div class="field-fillup">
+		<span class="input-field-title mendatory">Food Image</span>
+		<div class="col-md-80 input-div">
+			<label class="upload-single-image left" title="Please upload your logo">
+				<input name="file[]" multiple="" class="input-file" type="file">
+				<span class="thumb"><img src="public/images/icon/cart.png"></span>
+			</label>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="field-fillup">
+		<span class="input-field-title mendatory">Description</span>
+		<div class="col-md-80 input-div">
+		<textarea class="textarea" placeholder="Minimum 100 words required" ng-model="food_details.description"></textarea></div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-50 left">
+		<div class="field-fillup">
+			<span class="input-field-title mendatory">Food Price Per Plate</span>
+			<div class="col-md-80 input-div">
+			<input name="" class="input-box" placeholder="Food Price Per Plate" type="text" ng-model="food_details.price"></div>
+		</div>
+	</div>
+	<div class="col-md-50 left">
+		<div class="field-fillup">
+			<span class="input-field-title mendatory">Total Quantity</span>
+			<div class="col-md-80 input-div">
+			<input name="" class="input-box" placeholder="Total Quantity" type="text" ng-model="food_details.total_quantity"></div>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="col-md-50 left">
+		<div class="field-fillup">
+			<span class="input-field-title mendatory">Minimim Quantity</span>
+			<div class="col-md-80 input-div">
+			<input name="" class="input-box" placeholder="Minimim Quantity" type="text" ng-model="food_details.min_quantity"></div>
+		</div>
+	</div>
+	<div class="col-md-50 left">
+		<div class="field-fillup">
+			<span class="input-field-title">Maximum Quantity</span>
+			<div class="col-md-80 input-div">
+			<input name="" class="input-box" placeholder="Total Quantity" type="text" ng-model="food_details.max_quantity"></div>
+		</div>
+	</div>
+</div>
+
+<label ng-repeat="fruitName in fruits" class="checkbox-inline">
+                <input type="checkbox" 
+				value="{{fruitName}}" ng-checked="selection.indexOf(fruitName) > -1"
+				 ng-click="toggleSelection(fruitName)"> {{fruitName}}
+              </label>
+
+
+<h5 class="new-section-head">Please choose food type</h5>
+
+<div class="row">`
+	<div class="field-fillup">
+		<span class="input-field-title mendatory">Occasion</span>
+		<div class="col-md-80 input-div">
+		<ul class="section-selector">
+			<li class="list col-md-25" ng-repeat="occassion in occassions">
+				 <input type="checkbox"
+				value="{{occassion}}" ng-checked="selection.indexOf(occassion) > -1"
+				 ng-click="toggleSelection(occassion)"> {{occassion}}
+
+			
+
+
+			</li>
+	
+
+		</ul>
+		</div>
+	</div>
+</div>
+
+<div class="row">
+	<div class="field-fillup">
+		<span class="input-field-title mendatory">Cuisines</span>
+		<div class="col-md-80 input-div">
+		<ul class="section-selector">
+			<li class="list col-md-25">
+				<input id="<facility></facility>1" name="facility" value="facility1" class="fancy-checkbox" type="checkbox">
+				<label for="facility1" class="fancy-checkbox-label">indian</label>
+			</li>
+			<li class="list col-md-25">
+				<input id="facility1" name="facility" value="facility1" class="fancy-checkbox" type="checkbox">
+				<label for="facility1" class="fancy-checkbox-label">Rajasthani</label>
+			</li>
+			<li class="list col-md-25">
+				<input id="facility1" name="facility" value="facility1" class="fancy-checkbox" type="checkbox">
+				<label for="facility1" class="fancy-checkbox-label">European</label>
+			</li>
+			<li class="list col-md-25">
+				<input id="facility1" name="facility" value="facility1" class="fancy-checkbox" type="checkbox">
+				<label for="facility1" class="fancy-checkbox-label">Italian</label>
+			</li>
+			<li class="list col-md-25">
+				<input id="facility1" name="facility" value="facility1" class="fancy-checkbox" type="checkbox">
+				<label for="facility1" class="fancy-checkbox-label">Mexican</label>
+			</li>
+			<li class="list col-md-25">
+				<input id="facility1" name="facility" value="facility1" class="fancy-checkbox" type="checkbox">
+				<label for="facility1" class="fancy-checkbox-label">Chinese</label>
+			</li>
+			<li class="list col-md-25">
+				<input id="facility1" name="facility" value="facility1" class="fancy-checkbox" type="checkbox">
+				<label for="facility1" class="fancy-checkbox-label">French</label>
+			</li>
+			<li class="list col-md-25">
+				<input id="facility1" name="facility" value="facility1" class="fancy-checkbox" type="checkbox">
+				<label for="facility1" class="fancy-checkbox-label">American</label>
+			</li>
+			<li class="list col-md-25">
+				<input id="facility1" name="facility" value="facility1" class="fancy-checkbox" type="checkbox">
+				<label for="facility1" class="fancy-checkbox-label">South Indian</label>
+			</li>
+			<li class="list col-md-25">
+				<input id="facility1" name="facility" value="facility1" class="fancy-checkbox" type="checkbox">
+				<label for="facility1" class="fancy-checkbox-label">Punjabi</label>
+			</li>
+			<li class="list col-md-25">
+				<input id="facility1" name="facility" value="facility1" class="fancy-checkbox" type="checkbox">
+				<label for="facility1" class="fancy-checkbox-label">Gujrati</label>
+			</li>
+			<li class="list col-md-25">
+				<input id="facility1" name="facility" value="facility1" class="fancy-checkbox" type="checkbox">
+				<label for="facility1" class="fancy-checkbox-label">Other</label>
+			</li>
+		</ul>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="field-fillup">
+		<span class="input-field-title mendatory">Select Type</span>
+		<div class="col-md-80 input-div">
+
+		<ul class="section-selector">
+			<li class="list col-md-33">
+				<input type="radio" ng-model="food_details.food_type" class="fancy-radio" value="Vegetarian">
+			
+		        <label  class="fancy-radio-label">Vegetarian</label>
+	        </li>
+
+			<li class="list col-md-33">
+				<input type="radio" ng-model="food_details.food_type" class="fancy-radio" value="Non Vegetarian">
+		       
+		        <label class="fancy-radio-label">Non Vegetarian</label>
+	        </li>
+
+			<li class="list col-md-33">
+				<input type="radio" ng-model="food_details.food_type" class="fancy-radio" value="Non Vegetarian">
+		        
+		        <label  class="fancy-radio-label">Non Vegetarian</label>
+	        </li>
+	    </ul>
+		</div>
+	</div>
+</div>
+
+<h5 class="new-section-head">Delivery Schedule</h5>
+
+<div class="row">
+	<div class="col-md-50 left">
+		<div class="field-fillup">
+			<span class="input-field-title mendatory">Delivery Area</span>
+			<div class="col-md-80 input-div">
+				<select ng-model="food_details.delivery_range" ng-options="v for v in deliveryRange">
+  </select>
+			</div>
+		</div>
+	</div>
+	<div class="col-md-50 left">
+		<div class="field-fillup">
+			<span class="input-field-title mendatory">Select Date</span>
+			<div class="col-md-80 input-div">
+				<input class="input-box span2" value="02/16/12" data-date-format="mm/dd/yy" id="dp2" type="text" placeholder="Choose Available date">
+			</div>
+		</div>
+	</div>
+
+
+<div class="field-fillup">
+	<!-- <span class="input-field-title mendatory">Select Date</span> -->
+	<div class="col-md-80 input-div left padding-left-20">
+		<ul class="select-timings">
+	<li class="list">
+		<div class="v-small">
+	        <input id="check8" name="check" value="check8" class="fancy-checkbox" type="checkbox">
+	        <label for="check8" class="fancy-checkbox-label">Mon</label>
+     	</div>
+     	<div class="midd"><input type="text"  name="timepicker" class="timepicker input-box"></div>
+     	<div class="v-small center">
+     		<span class="">To</span>
+     	</div>
+     	<div class="midd"><input type="text"  name="timepicker" class="timepicker input-box"></div>
+	</li>
+	<li class="list">
+		<div class="v-small">
+	        <input id="check2" name="check" value="check2" class="fancy-checkbox" type="checkbox">
+	        <label for="check2" class="fancy-checkbox-label">Tue</label>
+     	</div>
+     	<div class="midd"><input type="text"  name="timepicker" class="timepicker input-box"></div>
+     	<div class="v-small center">
+     		<span class="">To</span>
+     	</div>
+     	<div class="midd"><input type="text"  name="timepicker" class="timepicker input-box"></div>
+	</li>
+	<li class="list">
+		<div class="v-small">
+	        <input id="check4" name="check" value="check4" class="fancy-checkbox" type="checkbox">
+	        <label for="check4" class="fancy-checkbox-label">Wed</label>
+     	</div>
+     	<div class="midd"><input type="text"  name="timepicker" class="timepicker input-box"></div>
+     	<div class="v-small center">
+     		<span class="">To</span>
+     	</div>
+     	<div class="midd"><input type="text"  name="timepicker" class="timepicker input-box"></div>
+	</li>
+	<li class="list">
+		<div class="v-small">
+	        <input id="check5" name="check" value="check5" class="fancy-checkbox" type="checkbox">
+	        <label for="check5" class="fancy-checkbox-label">Thu</label>
+     	</div>
+     	<div class="midd"><input type="text"  name="timepicker" class="timepicker input-box"></div>
+     	<div class="v-small center">
+     		<span class="">To</span>
+     	</div>
+     	<div class="midd"><input type="text"  name="timepicker" class="timepicker input-box"></div>
+	</li>
+	<li class="list">
+		<div class="v-small">
+	        <input id="check6" name="check" value="check6" class="fancy-checkbox" type="checkbox">
+	        <label for="check6" class="fancy-checkbox-label">Fri</label>
+     	</div>
+     	<div class="midd"><input type="text"  name="timepicker" class="timepicker input-box"></div>
+     	<div class="v-small center">
+     		<span class="">To</span>
+     	</div>
+     	<div class="midd"><input type="text"  name="timepicker" class="timepicker input-box"></div>
+	</li>
+	<li class="list">
+		<div class="v-small">
+	        <input id="check3" name="check" value="check3" class="fancy-checkbox" type="checkbox">
+	        <label for="check3" class="fancy-checkbox-label">Sat</label>
+     	</div>
+     	<div class="midd"><input type="text"  name="timepicker" class="timepicker input-box"></div>
+     	<div class="v-small center">
+     		<span class="">To</span>
+     	</div>
+     	<div class="midd"><input type="text"  name="timepicker" class="timepicker input-box"></div>
+	</li>
+	<li class="list">
+		<div class="v-small">
+	        <input id="check7" name="check" value="check7" class="fancy-checkbox" type="checkbox">
+	        <label for="check7" class="fancy-checkbox-label">Sun</label>
+     	</div>
+     	<div class="midd"><input type="text"  name="timepicker" class="timepicker input-box"></div>
+     	<div class="v-small center">
+     		<span class="">To</span>
+     	</div>
+     	<div class="midd"><input type="text"  name="timepicker" class="timepicker input-box"></div>
+	</li>
+</ul>
+	</div>
+</div>
+
+</div>
+<!-- 
+<div class="row">
+	<div class="field-fillup">
+		<span class="input-field-title mendatory">Status</span>
+		<div class="col-md-80 input-div">
+			<select class="select-option">
+				<option>Active</option>
+				<option>Deactive</option>
+			</select>
+		</div>
+	</div>
+</div> -->
+<div class="row margin-bottom-20px">
+	<div class="field-fillup">
+		<div class="center"><input type="submit" name="" class="submit-btn col-px-150" value="save" ng-click="save_food_details(food_details)"></div>
+	</div>
+</div>
+
+</div>
+
+<script src="plugin/calendar/js/1.js"></script> 
+<script type="text/javascript">
+$('#dp2').fdatepicker({
+	closeButton: false
+});
+</script>
+<script type="text/javascript" src="plugin/time-picker/wickedpicker.js"></script>
+<script type="text/javascript">
+$('.timepicker').wickedpicker({now: '8:16', twentyFour: false, title:
+        'Delivery Time', showSeconds: false});
+
+</script>
+
+
+
+			

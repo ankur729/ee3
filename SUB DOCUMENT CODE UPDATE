@@ -1,0 +1,66 @@
+router
+
+.post('/user-address-add',function(req,res,next){
+
+  
+
+         if(req.body.hasOwnProperty('address_default'))
+         {  
+            console.log('has property');
+
+            db.user_infos.findAndModify(
+                    
+                    {query:{_id: mongojs.ObjectId(req.body.user_id),
+                            'address.address_default':"true"
+                    },
+                     update: {
+                             $set:{'address.$.address_default':'false'}
+                            
+                         },
+                     new:true
+                }
+                , function (err, data, lastErrorObject) {
+                if(err){
+                        res.status(400);
+                        res.send('error');
+                         throw err;
+ console.log(err);
+                        }    
+                        res.status(200);
+                         res.send(data);
+                      
+                       
+            });
+
+            }
+
+            else
+            {
+
+              
+                db.user_infos.findAndModify(
+                    
+                    {query:{_id: mongojs.ObjectId(req.body.user_id)},
+                     update: {
+                             $push:{'address': {'address_name':req.body.address_name,'address_details':req.body.address_details,'address_locality':req.body.address_locality_landmark,'address_pincode':req.body.address_pincode,'address_state':req.body.address_state,'address_city':req.body.address_city,'address_contact':req.body.address_contact_no,'address_type':req.body.address_type,'address_default':'false'}}
+                            
+                         },
+                     new:true
+                }
+                , function (err, data, lastErrorObject) {
+                if(err){
+                        res.status(400);
+                        res.send('error');
+                         throw err;
+
+                        }    
+                        res.status(200);
+                         res.send(data);
+                      
+                       
+            });
+                
+                
+            }
+
+});
